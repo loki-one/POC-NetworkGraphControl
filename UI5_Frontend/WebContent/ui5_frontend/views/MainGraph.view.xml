@@ -1,0 +1,82 @@
+<mvc:View
+  controllerName="public.GraphVisualizer.UI5_Frontend.WebContent.ui5_frontend.controllers.MainGraph"
+  xmlns="sap.suite.ui.commons.networkgraph"
+  xmlns:m="sap.m"
+  xmlns:l="sap.ui.layout"
+  xmlns:core="sap.ui.core"
+  xmlns:layout="sap.suite.ui.commons.networkgraph.layout"
+  xmlns:mvc="sap.ui.core.mvc">
+  <l:FixFlex>
+      <l:fixContent>
+        <m:OverflowToolbar>
+            <m:content>
+                <m:Button
+                    text="{i18n>openProcedureSelectionDialogButtonText}"
+                    press="onOpenProcedureSelectionDialog"
+                    class="sapUiSmallMarginEnd"/>
+                <m:Select id="orientation" tooltip="Orientation" selectedKey="{/networkGraphSettings/orientation}">
+                        <core:Item key="LeftRight" text="Left-Right"/>
+                        <core:Item key="RightLeft" text="Right-Left"/>
+                        <core:Item key="TopBottom" text="Top-Bottom"/>
+                </m:Select>
+                <m:Select id="nodePlacement" tooltip="Node placement" selectedKey="{/networkGraphSettings/nodePlacement}">
+                        <core:Item key="BrandesKoepf" text="Brandes-Koepf"/>
+                        <core:Item key="LinearSegments" text="Linear Segments"/>
+                        <core:Item key="Simple" text="Simple"/>
+                </m:Select>
+                <m:Select id="arrowPosition" tooltip="Arrow position" selectedKey="{/networkGraphSettings/arrowPosition}">
+                        <core:Item key="Start" text="Arrow Start"/>
+                        <core:Item key="Middle" text="Arrow Middle"/>
+                        <core:Item key="End" text="Arrow End"/>
+                 </m:Select>
+                 <m:Select id="arrowOrientation" tooltip="Arrow orientation" selectedKey="{/networkGraphSettings/arrowOrientation}">
+                        <core:Item key="ParentOf" text="Parent -> Child"/>
+                        <core:Item key="ChildOf" text="Child -> Parent"/>
+                        <core:Item key="None" text="Hidden"/>
+                  </m:Select>
+                  <m:Select id="mergeEdges" tooltip="Merge Edges" change="mergeChanged" selectedKey="0">
+                        <core:Item key="0" text="Split edges"/>
+                        <core:Item key="1" text="Merged edges"/>
+                  </m:Select>
+                  <m:Select id="nodeSpacing" tooltip="Node Spacing" selectedKey="55" change="spacingChanged">
+                        <core:Item key="20" text="Node spacing (20)"/>
+                        <core:Item key="40" text="Node spacing (40)"/>
+                        <core:Item key="55" text="Node spacing (55)"/>
+                        <core:Item key="80" text="Node spacing (80)"/>
+                        <core:Item key="100" text="Node spacing (100)"/>
+                  </m:Select>
+                  <m:Select id="nodeShape" tooltip="Shape of the Nodes" selectedKey="{/networkGraphSettings/nodeShape}">
+                        <core:Item key="Box" text="Box Shaped"/>
+                        <core:Item key="Circle" text="Circular"/>
+                  </m:Select>
+                  <m:Select id="edgeType" tooltip="Type of Edge" selectedKey="{/networkGraphSettings/linkType}">
+                        <core:Item key="Dashed" text="Dashed"/>
+                        <core:Item key="Dotted" text="Dotted"/>
+                        <core:Item key="Solid" text="Solid"/>
+                  </m:Select>
+            </m:content>
+        </m:OverflowToolbar>
+         <Graph id="myGraph" nodes="{/graph/nodes}" lines="{/graph/links}" orientation="{/networkGraphSettings/orientation}">
+               <layoutAlgorithm>
+                    <layout:LayeredLayout mergeEdges="{/networkGraphSettings/mergeEdges}" nodePlacement="{/networkGraphSettings/nodePlacement}" nodeSpacing="{/networkGraphSettings/nodeSpacing}"></layout:LayeredLayout>
+               </layoutAlgorithm>
+               <nodes>
+                    <Node key="{id}" shape= "{/networkGraphSettings/nodeShape}" title="{id}" attributes="{path:'attributes', templateShareable:true}" status="{status}" icon="sap-icon://employee-pane">
+                        <attributes>
+                           <ElementAttribute
+                               label="{label}"
+                               value="{value}"/>
+                        </attributes>
+                    </Node>
+               </nodes>
+               <lines>
+                    <Line from="{source}" to="{target}" attributes="{path:'attributes', templateShareable:true}" lineType="{/networkGraphSettings/linkType}" arrowPosition="{/networkGraphSettings/arrowPosition}" arrowOrientation="{/networkGraphSettings/arrowOrientation}">
+                        <attributes>
+                             <ElementAttribute label="{label}" value="{value}"/>
+                        </attributes>
+                    </Line>
+               </lines>
+         </Graph>
+      </l:fixContent>
+  </l:FixFlex>
+</mvc:View>

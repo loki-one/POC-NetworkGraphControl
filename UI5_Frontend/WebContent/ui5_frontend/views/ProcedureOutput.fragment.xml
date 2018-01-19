@@ -1,0 +1,55 @@
+<core:FragmentDefinition
+   xmlns="sap.m"
+   xmlns:core="sap.ui.core"
+   xmlns:f="sap.ui.layout.form">
+   <Dialog
+      id="procedureOutputDialog"
+      title="{i18n>procedureOutputDialogText}"
+      contentWidth="600px"
+      contentheight="500px">
+      <f:Form id="procedureAttributesOutput" editable="true">
+           <f:layout>
+           <f:ResponsiveGridLayout
+                 labelSpanL="4"
+                 labelSpanM="4"
+                 labelSpanS="4"
+                 emptySpanL="2"
+                 emptySpanM="2"
+                 emptySpanS="2"/>
+          </f:layout>
+          <f:FormContainer>
+                <f:FormElement label="Vertex Key" labelFor="vertexKey">
+                    <Select id="vertexKey" items="{/procedureAttributes}" change="validateOnLoadGraph" forceSelection="false" selectedKey="" autoAdjustWidth="true">
+                        <core:Item key="{COLUMN_NAME} {TABLE_NAME} {PARAMETER_NAME}" text="{TABLE_NAME} => {COLUMN_NAME}"></core:Item>
+                    </Select> 
+                </f:FormElement>
+                <f:FormElement label="Edge Key" labelFor="edgeKey">
+                    <Select id="edgeKey" items="{/procedureAttributes}" change="validateOnLoadGraph" forceSelection="false" selectedKey="">
+                        <core:Item key="{COLUMN_NAME} {TABLE_NAME} {PARAMETER_NAME}" text="{TABLE_NAME} => {COLUMN_NAME}"></core:Item>
+                    </Select> 
+                </f:FormElement>
+                <f:FormElement label="Source" labelFor="source">
+                    <Select id="source" items="{/procedureAttributes}" change="validateOnLoadGraph" forceSelection="false" selectedKey="">
+                        <core:Item key="{COLUMN_NAME} {TABLE_NAME} {PARAMETER_NAME}" text="{TABLE_NAME} => {COLUMN_NAME}"></core:Item>
+                    </Select> 
+                </f:FormElement>
+                <f:FormElement label="Target" labelFor="target">
+                    <Select id="target" items="{/procedureAttributes}" change="validateOnLoadGraph" forceSelection="false" selectedKey="">
+                        <core:Item key="{COLUMN_NAME} {TABLE_NAME} {PARAMETER_NAME}" text="{TABLE_NAME} => {COLUMN_NAME}"></core:Item>
+                    </Select> 
+                </f:FormElement>
+          </f:FormContainer>
+      </f:Form>
+      <beginButton>
+         <Button
+            id="loadGraph"
+            text="{i18n>loadGraphButtonText}"
+            press="onLoadGraph"/>
+       </beginButton>
+       <endButton>
+          <Button
+            text="{i18n>dialogCloseButtonText}"
+            press="onCloseProcedureOutputDialog"/>
+      </endButton>
+   </Dialog>
+</core:FragmentDefinition>

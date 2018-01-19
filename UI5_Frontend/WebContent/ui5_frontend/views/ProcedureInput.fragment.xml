@@ -1,0 +1,27 @@
+<core:FragmentDefinition
+   xmlns="sap.m"
+   xmlns:core="sap.ui.core" >
+   <Dialog
+      id="procedureInputDialog"
+      title="{i18n>procedureInputDialogText}"
+      contentWidth="600px"
+      contentheight="500px">
+      <List id = "singleInputProcedure" headerTest="Input Parameter List" items="{/procedureInputParameters}">
+            <InputListItem label="{PARAMETER_NAME}">
+                 <content>
+                    <Input placeholder="graph procedure input" />
+                 </content>
+            </InputListItem>
+      </List>
+      <beginButton>
+         <Button
+            text="{i18n>loadProcedureOutputButtonText}"
+            press="onLoadProcedureOutput"/>
+       </beginButton>
+       <endButton>
+          <Button
+            text="{i18n>dialogCloseButtonText}"
+            press="onCloseProcedureInputDialog"/>
+      </endButton>
+   </Dialog>
+</core:FragmentDefinition>

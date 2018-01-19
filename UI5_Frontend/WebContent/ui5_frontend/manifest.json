@@ -1,0 +1,78 @@
+{
+  "_version": "1.1.0",
+  "sap.app": {
+    "_version": "1.1.0",
+    "id": "public.GraphVisualizer.UI5_Frontend.WebContent.ui5_frontend.Component",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "applicationVersion": {
+      "version": "1.0.0"
+    }
+  },
+  "sap.ui": {
+    "_version": "1.1.0",
+    "technology": "UI5",
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    },
+    "supportedThemes": [
+      "sap_hcb",
+      "sap_belize"
+    ]
+  },
+  "sap.ui5": {
+    "_version": "1.1.0",
+    "resources": {
+            "css": [
+                 {
+                    "uri" : "css/style.css"
+                 }
+            ]
+        },
+    "rootView": "public.GraphVisualizer.UI5_Frontend.WebContent.ui5_frontend.views.App",
+    "dependencies": {
+      "minUI5Version": "1.30",
+      "libs": {
+        "sap.ui.core": {},
+        "sap.m": {},
+        "sap.ui.layout": {},
+        "sap.suite.ui.commons": {}
+      }
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "public.GraphVisualizer.UI5_Frontend.WebContent.ui5_frontend.i18n.i18n"
+        }
+      },
+      "": {
+      "type": "sap.ui.model.json.JSONModel",
+      "settings": {
+          "graph": {
+              "nodes": null,
+              "links": null
+          },
+          "procedureInputParameters": null,
+          "graphProcedures": null,
+          "selectedProcedure" : null,
+          "procedureAttributes": null,
+          "procedureData": null,
+          "networkGraphSettings": {
+                "orientation": "TopBottom",
+                "arrowPosition": "End",
+                "arrowOrientation": "ParentOf",
+                "nodeSpacing": 55,
+                "mergeEdges": false,
+                "nodeShape": "Circle",
+                "linkType": "Solid"
+          }
+        }
+      }
+    }
+  }
+}

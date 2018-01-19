@@ -1,0 +1,25 @@
+<core:FragmentDefinition
+   xmlns="sap.m"
+   xmlns:core="sap.ui.core" >
+   <Dialog
+      id="selectProcedureDialog"
+      title="{i18n>selectProcedureDialogText}"
+      contentWidth="600px"
+      contentheight="500px">
+        <List
+            id="procedure"
+            noDataText="No graph procedures found"
+            growing="false"
+            itemPress="onProcedureSelect"
+            items="{ path : '/graphProcedures', sorter: [{ path: 'SCHEMA_NAME', group: true }] }" >
+        <StandardListItem
+            title="{PROCEDURE_NAME}"
+            type="Active"/>
+       </List>
+       <endButton>
+          <Button
+            text="{i18n>dialogCloseButtonText}"
+            press="onCloseProcedureSelectionDialog"/>
+      </endButton>
+   </Dialog>
+</core:FragmentDefinition>

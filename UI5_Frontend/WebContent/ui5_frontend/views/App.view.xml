@@ -1,0 +1,15 @@
+<mvc:View
+   controllerName="public.GraphVisualizer.UI5_Frontend.WebContent.ui5_frontend.controllers.App"
+   xmlns="sap.m"
+   xmlns:mvc="sap.ui.core.mvc"
+   displayBlock="true">
+    <App>
+      <pages>
+         <Page title="{i18n>homePageTitle}" width="auto">
+            <content>
+                <mvc:XMLView viewName="public.GraphVisualizer.UI5_Frontend.WebContent.ui5_frontend.views.MainGraph"/>
+            </content>
+         </Page>
+      </pages>
+   </App>
+</mvc:View>
